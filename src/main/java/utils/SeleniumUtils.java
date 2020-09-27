@@ -3,6 +3,7 @@ package utils;
 
 import java.time.Duration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -74,4 +75,14 @@ public class SeleniumUtils {
             }
         }
     }
+
+    public static WebElement selectDatePickerDay(List<WebElement> days, String dayInput) {
+        return days.stream().filter( day -> day.getText().contains(dayInput)).findFirst().get();
+    }
+
+    public static WebElement selectFromDropDown(List<WebElement> dropDown, String filter) {
+        return dropDown.stream().filter(option -> option.getText().contains(filter)).findFirst().get();
+    }
+
+
 }

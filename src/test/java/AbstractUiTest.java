@@ -19,12 +19,14 @@ public abstract class AbstractUiTest {
 
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
-        if (null != driver) {
-            driver.quit();
-        }
+//        if (null != driver) {
+//            driver.quit();
+//        }
     }
 
-    protected abstract String getBaseUrl();
+    protected String getBaseUrl() {
+        return "https://phptravels.net/";
+    }
 
     protected WebDriver getDriver() {
         return driver;
