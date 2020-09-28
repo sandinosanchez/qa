@@ -23,10 +23,8 @@ public class WebDriverUtils {
         CHROME {
             @Override
             public WebDriver build() {
-//                ChromeOptions chromeOptions = new ChromeOptions();
-//                chromeOptions.setHeadless(true);
                 WebDriverManager.chromedriver().setup();
-                return new ChromeDriver();
+                return new ChromeDriver(new ChromeOptions().setHeadless(true));
             }
         },
         CHROME_MOBILE {

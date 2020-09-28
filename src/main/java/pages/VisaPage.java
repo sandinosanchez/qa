@@ -1,14 +1,13 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.JavascriptUtils;
 
 import static utils.SeleniumUtils.*;
 
-import java.security.Key;
 import java.util.List;
 
 public class VisaPage extends AbstractPage{
@@ -17,7 +16,7 @@ public class VisaPage extends AbstractPage{
     private WebElement fromCountry;
 
     @FindBy(xpath = "(//input[@class='chosen-search-input'])[7]")
-    private WebElement fromCountrySpan;
+    private WebElement fromCountryInput;
 
     @FindBy(xpath = "//span[contains(text(), 'United States')]")
     private WebElement toCountry;
@@ -40,16 +39,17 @@ public class VisaPage extends AbstractPage{
 
     public void completeForm() {
         fromCountry.click();
-        fromCountrySpan.sendKeys("Argentina");
-        fromCountrySpan.sendKeys(Keys.ENTER);
+        fromCountryInput.sendKeys("Argentina");
+        fromCountryInput.sendKeys(Keys.ENTER);
 
         toCountry.click();
         toCountryInput.sendKeys("China");
         toCountryInput.sendKeys(Keys.ENTER);
 
         date.click();
-        selectDatePickerDay(dataPickerDays, "28").click();
-        submitButton.click();
+        waitForElementVisibility(driver, dataPickerDays.get(0));
+        JavascriptUtils.click(driver, selectDatePickerDay(dataPickerDays, "28"));
+        JavascriptUtils.click(driver, submitButton);
 
     }
 
