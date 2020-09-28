@@ -41,11 +41,9 @@ public class VisaPage extends AbstractPage{
         fromCountry.click();
         fromCountryInput.sendKeys("Argentina");
         fromCountryInput.sendKeys(Keys.ENTER);
-
         toCountry.click();
-        toCountryInput.sendKeys("China");
+        toCountryInput.sendKeys("china");
         toCountryInput.sendKeys(Keys.ENTER);
-
         date.click();
         waitForElementVisibility(driver, dataPickerDays.get(0));
         JavascriptUtils.click(driver, selectDatePickerDay(dataPickerDays, "28"));

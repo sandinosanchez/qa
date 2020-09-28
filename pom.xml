@@ -57,7 +57,7 @@
             <artifactId>json-schema-validator</artifactId>
             <version>4.1.2</version>
         </dependency>
-
+|
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
