@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.sun.jndi.toolkit.url.Uri;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,13 +22,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class WebDriverUtils {
 
     public enum Driver {
-        CHROME {
-            @Override
-            public WebDriver build() {
-                WebDriverManager.chromedriver().setup();
-                return new ChromeDriver(/*new ChromeOptions().setHeadless(true)*/);
-            }
-        },
+
         CHROME_MOBILE {
             @Override
             public WebDriver build() {
@@ -53,6 +49,10 @@ public class WebDriverUtils {
                 System.out.println("Chrome");
                 DesiredCapabilities caps = DesiredCapabilities.chrome();
                 caps.setPlatform(Platform.LINUX);
+
+             //   ChromeOptions options = new ChromeOptions();
+              //  options.setCapability("platform", "Linux");
+               // options.setCapability("version", "latest");
                 return new RemoteWebDriver(getHubUrl(), caps);
             }
         },
@@ -156,7 +156,7 @@ public class WebDriverUtils {
     public static URL getHubUrl() {
         String hubUrl = System.getProperty("hubUrl");
         if(null == hubUrl || hubUrl.isEmpty()) {
-            hubUrl = "http://127.0.0.1:4444/wd/hub";
+            hubUrl = "http://172.17.0.2:4444/wd/hub";
         }
 
         URL url = null;

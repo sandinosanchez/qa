@@ -17,4 +17,5 @@ public class FlightsTest extends AbstractUiTest {
                 "BML to BVA");
     }
 
+
 }

@@ -11,7 +11,7 @@ public abstract class AbstractUiTest {
 
     @BeforeMethod
     @Parameters(value = "browser")
-    public void initBrowser(@Optional(value = "CHROME") String browser) {
+    public void initBrowser(@Optional(value = "REMOTE_CHROME_LINUX") String browser) {
         System.out.println("browser " + browser);
         driver = WebDriverUtils.Driver.valueOf(browser).build();
         driver.get(getBaseUrl());
@@ -19,13 +19,14 @@ public abstract class AbstractUiTest {
 
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
-//        if (null != driver) {
-//            driver.quit();
-//        }
+        if (null != driver) {
+           driver.quit();
+        }
     }
 
     protected String getBaseUrl() {
         return "https://phptravels.net/";
+
     }
 
     protected WebDriver getDriver() {

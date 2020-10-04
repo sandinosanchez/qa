@@ -6,8 +6,8 @@ public class VisaTest extends AbstractUiTest {
 
     @Test
     public void searchForVisa(){
-    VisaPage visaPage = new HomePage(getDriver()).clickVisaButton();
-    visaPage.completeForm();
+ //   VisaPage visaPage = new HomePage(getDriver()).clickVisaButton();
+ //   visaPage.completeForm();
     }
 
 }
